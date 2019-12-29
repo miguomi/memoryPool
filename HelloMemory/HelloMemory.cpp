@@ -9,7 +9,7 @@ int main()
 {
 	//1
 	char * data1 = new char[128];
-	std::cout << "data1[" << data1 << "]" << std::endl;
+	//std::cout << "data1[" << data1 << "]" << std::endl;
 	delete[] data1;
 
 	//2

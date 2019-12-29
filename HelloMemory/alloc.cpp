@@ -13,11 +13,11 @@ void operator delete(void * p) {
 }
 
 void *operator new[](size_t size) {
-	std::cout << "new[]" << std::endl;
+	//std::cout << "new[]" << std::endl;
 	return MemoryMgr::Instance().allocMemory(size);
 }
 
 void operator delete[](void * p) {
-	std::cout << "delete[]" << std::endl;
+	//std::cout << "delete[]" << std::endl;
 	MemoryMgr::Instance().freeMemory(p);
 }

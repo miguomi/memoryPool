@@ -66,7 +66,7 @@ public:
 	void * allocMemory(size_t nSize) {
 		std::lock_guard<std::mutex> lg(_lockMutex);
 		if (nullptr == _pBuf) {
-			std::cout << "pbuf is null" << std::endl;
+			std::cout <<"["<< _nEveryBlockMemorySize << "]pbuf is null" << std::endl;
 			Initmemory();
 		}
 
@@ -79,6 +79,7 @@ public:
 			pReturn->_nRef = 1;
 			pReturn->_pAlloc = nullptr;
 			pReturn->_pNext = nullptr;
+			std::cout << "NO In allocMem=[" << pReturn << "]--BlockSize["<< _nEveryBlockMemorySize <<"]--id=[" << pReturn->_nID << "]--size=[" << nSize << "]" << std::endl;
 		}
 		else
 		{
@@ -86,6 +87,7 @@ public:
 			_pHeader = _pHeader->_pNext;
 			assert(0 == pReturn->_nRef);
 			pReturn->_nRef = 1;
+			std::cout << "allocMem=[" << pReturn << "]--BlockSize[" << _nEveryBlockMemorySize << "]--id=[" << pReturn->_nID << "]--size=[" << nSize << "]" << std::endl;
 		}
 
 		return (void*)((char*)pReturn+sizeof(MemoryBlock));
@@ -225,27 +227,27 @@ public:
 			return _szAlloc[nSize]->allocMemory(nSize);
 		}
 		else {
-			printf("+++allocMemory\n");
-			xPrintf("allocMemory\n");
-			std::cout << "sizeof(MemoryBlock)[" << sizeof(MemoryBlock) << "]" << std::endl;
+			//printf("+++allocMemory\n");
+			//xPrintf("allocMemory\n");
+			//std::cout << "sizeof(MemoryBlock)[" << sizeof(MemoryBlock) << "]" << std::endl;
 			MemoryBlock* pReturn = (MemoryBlock*)malloc(nSize + sizeof(MemoryBlock));
 			pReturn->_bPool = false;
 			pReturn->_nID = -1;
 			pReturn->_nRef = 1;
 			pReturn->_pAlloc = nullptr;
 			pReturn->_pNext = nullptr;
-			std::cout << "pReturn[" << pReturn << "]--allocReturn["<< (char*)pReturn + sizeof(MemoryBlock)<<"]" << std::endl;
-
+			//std::cout << "pReturn[" << pReturn << "]--allocReturn["<< (char*)pReturn + sizeof(MemoryBlock)<<"]" << std::endl;
+			std::cout << "NO111 In allocMem=[" << pReturn << "]--id=[" << pReturn->_nID << "]--size=[" << nSize << "]" << std::endl;
 			//freeMemory((char*)pReturn + sizeof(MemoryBlock));
 			return (char*)pReturn + sizeof(MemoryBlock);
 		}
 	}
 	//ÊÍ·ÅÄÚ´æ
 	void  freeMemory(void * pMem) {
-		std::cout << "sizeof(MemoryBlock)[" << sizeof(MemoryBlock) << "]" << std::endl;
-		std::cout << "freeMemory pMem[" << pMem << "]"<< std::endl;
+		//std::cout << "sizeof(MemoryBlock)[" << sizeof(MemoryBlock) << "]" << std::endl;
+		//std::cout << "freeMemory pMem[" << pMem << "]"<< std::endl;
 		MemoryBlock* pBlock = (MemoryBlock*)((char*)pMem - sizeof(MemoryBlock));
-		std::cout << "freeMemory pMem[" << pMem << "]--pBlock[" << pBlock << "]" << std::endl;
+		//std::cout << "freeMemory pMem[" << pMem << "]--pBlock[" << pBlock << "]" << std::endl;
 		if (pBlock->_bPool) {
 			pBlock->_pAlloc->freeMemory(pMem);
 		}
