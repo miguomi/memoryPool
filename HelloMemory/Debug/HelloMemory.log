@@ -1,3 +1,22 @@
-﻿  alloc.cpp
+﻿  HelloMemory.cpp
+c:\users\home\documents\visual studio 2015\projects\hellomemory\hellomemory\objectpool.hpp(71): warning C4267: “初始化”: 从“size_t”转换到“char”，可能丢失数据
+  c:\users\home\documents\visual studio 2015\projects\hellomemory\hellomemory\objectpool.hpp(60): note: 编译类 模板 成员函数“void *ObjectPool<Type,10>::allocObjectMemory(std::size_t)”时
+          with
+          [
+              Type=MyClass
+          ]
+  c:\users\home\documents\visual studio 2015\projects\hellomemory\hellomemory\objectpool.hpp(138): note: 参见对正在编译的函数 模板 实例化“void *ObjectPool<Type,10>::allocObjectMemory(std::size_t)”的引用
+          with
+          [
+              Type=MyClass
+          ]
+  c:\users\home\documents\visual studio 2015\projects\hellomemory\hellomemory\objectpool.hpp(143): note: 参见对正在编译的类 模板 实例化“ObjectPool<Type,10>”的引用
+          with
+          [
+              Type=MyClass
+          ]
+  c:\users\home\documents\visual studio 2015\projects\hellomemory\hellomemory\objectpool.hpp(141): note: 编译类 模板 成员函数“void ObjectPoolBase<MyClass,10>::operator delete(void *)”时
+  c:\users\home\documents\visual studio 2015\projects\hellomemory\hellomemory\hellomemory.cpp(25): note: 参见对正在编译的函数 模板 实例化“void ObjectPoolBase<MyClass,10>::operator delete(void *)”的引用
+  c:\users\home\documents\visual studio 2015\projects\hellomemory\hellomemory\hellomemory.cpp(14): note: 参见对正在编译的类 模板 实例化“ObjectPoolBase<MyClass,10>”的引用
   HelloMemory.vcxproj -> C:\Users\home\Documents\Visual Studio 2015\Projects\HelloMemory\Debug\HelloMemory.exe
   HelloMemory.vcxproj -> C:\Users\home\Documents\Visual Studio 2015\Projects\HelloMemory\Debug\HelloMemory.pdb (Full PDB)

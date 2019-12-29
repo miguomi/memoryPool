@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alloc.h" />
+    <ClInclude Include="objectPool.hpp" />
     <ClInclude Include="memoryMgr.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
