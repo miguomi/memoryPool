@@ -103,7 +103,7 @@ private:
 
 		NodeHeader* pTempBefore = _pHeader;
 		for (size_t n = 1; n < nPoolSize; n++) {
-			NodeHeader* pTemp = (NodeHeader*)(_pBuf + n * nSize);
+			NodeHeader* pTemp = (NodeHeader*)(_pBuf + n * nRealSize);
 			pTemp->_bPool = true;
 			pTemp->_nID = n;
 			pTemp->_cRef = 0;
